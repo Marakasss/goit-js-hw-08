@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+img {
+    display: block;
+    width: 360px;
+    height: 200px;
+    border-radius: 8px;
+}
+
+section {
+    padding: 24px 0;
+    max-width: 1128px;
+    margin: 0 auto;
+}

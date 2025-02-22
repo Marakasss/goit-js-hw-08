@@ -71,7 +71,12 @@ const gallery = document.querySelector('.gallery');
 //ADD PHOTOS TO GALLARY
 const galleryItemsList = images
     .map(item => {
-        const { preview, original, description } = item;
+        const {
+            preview = 'https://flowbite.com/docs/images/examples/image-1@2x.jpg', //DEFAULT
+            original = 'https://flowbite.com/docs/images/examples/image-1@2x.jpg', 
+            description = 'Something wrong. Cant download photo'
+            } = item;
+        
         return `<li class="gallery-item">
                     <a class="gallery-link" href= ${original}>
                         <img
@@ -87,9 +92,25 @@ const galleryItemsList = images
 
 gallery.insertAdjacentHTML('afterbegin', galleryItemsList);
 
-//PREVENT DEFAULT CLICK ON HREF IN ITEM LINK
-const galleryLinks = document.querySelectorAll('.gallery-link');
-galleryLinks.forEach(link => link.addEventListener('click', event => event.preventDefault()));
 
-//ADD LISTENER TO GALLARY
+//PREVENT DEFAULT + SHOW MODAL + ESC HIDE MODAL
+gallery.addEventListener('click', event => {
+    event.preventDefault();
+//show
+    if (event.target.tagName !== 'IMG') return; 
+        let largeImageUrl = event.target.getAttribute('data-source');
+        const instance = basicLightbox.create(`<img src="${largeImageUrl}" width="1112" height="640">`);       
+    instance.show()
+//hide
+    const hideOnEsc = (event) => {
+        if (event.key === 'Escape') {
+            instance.close()
+            document.removeEventListener('keydown', hideOnEsc)
+        };
+    };
+    if(instance.visible()) {
+        document.addEventListener('keydown', hideOnEsc);
+    };
+    
+})
 

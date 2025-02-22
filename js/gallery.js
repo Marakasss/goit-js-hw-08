@@ -74,7 +74,7 @@ const galleryItemsList = images
         const {
             preview = 'https://flowbite.com/docs/images/examples/image-1@2x.jpg', //DEFAULT
             original = 'https://flowbite.com/docs/images/examples/image-1@2x.jpg', 
-            description = 'Something wrong. Cant download photo'
+            description = 'It must be description. But DeepThought is broken and its 42.😀'
             } = item;
         
         return `<li class="gallery-item">

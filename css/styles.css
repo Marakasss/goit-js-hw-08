@@ -20,6 +20,13 @@ body {
     height: 200px;
     border-radius: 4px;
     transition: transform 0.3s ease-in-out;
+    opacity: 0;       
+}
+
+.animation {
+    opacity: 1;
+    animation: bounceInDown;
+    animation-duration: 2s;
 }
 
 .gallery-image:hover {

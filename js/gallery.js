@@ -93,6 +93,15 @@ const galleryItemsList = images
 gallery.insertAdjacentHTML('afterbegin', galleryItemsList);
 
 
+//ANIMATION APPEARS
+let galleryItem = document.querySelectorAll('.gallery-image');
+galleryItem.forEach((item, index) => {
+    setTimeout(() => {
+        item.classList.add('animation')
+    }, (index + 1) * 300)
+})
+
+
 //PREVENT DEFAULT + SHOW MODAL + ESC HIDE MODAL
 gallery.addEventListener('click', event => {
     event.preventDefault();

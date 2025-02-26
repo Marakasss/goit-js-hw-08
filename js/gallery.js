@@ -93,33 +93,31 @@ const galleryItemsList = images
 gallery.insertAdjacentHTML('afterbegin', galleryItemsList);
 
 
-//ANIMATION APPEARS
+//ANIMATION APPEARS 
 let galleryItem = document.querySelectorAll('.gallery-image');
 galleryItem.forEach((item, index) => {
     setTimeout(() => {
         item.classList.add('animation')
-    }, (index + 1) * 300)
+    }, (index + 1) * 300) //delay for every item
 })
 
 
 //PREVENT DEFAULT + SHOW MODAL + ESC HIDE MODAL
 gallery.addEventListener('click', event => {
     event.preventDefault();
-//show
-    if (event.target.tagName !== 'IMG') return; 
-        let largeImageUrl = event.target.getAttribute('data-source');
-        const instance = basicLightbox.create(`<img src="${largeImageUrl}" width="1112" height="640">`);       
-    instance.show()
-//hide
+    //show
+    if (event.target.tagName !== 'IMG') return;
+    let largeImageUrl = event.target.getAttribute('data-source');
+    const instance = basicLightbox.create(`<img src="${largeImageUrl}" width="1112" height="640">`);
+    instance.show();
+    //hide
     const hideOnEsc = (event) => {
         if (event.key === 'Escape') {
-            instance.close()
-            document.removeEventListener('keydown', hideOnEsc)
+            instance.close();
+            document.removeEventListener('keydown', hideOnEsc);
         };
     };
-    if(instance.visible()) {
-        document.addEventListener('keydown', hideOnEsc);
-    };
     
-})
+    document.addEventListener('keydown', hideOnEsc);
+});
 
